@@ -41,7 +41,7 @@ if len(df) < 30:
 # 4. Forecast
 if st.button("Make forecast"):
     with st.spinner("Fitting the model..."):
-        model = Prophet()
+        model = Prophet(changepoint_prior_scale=0.10)
         if use_holidays:
             model.add_country_holidays(country_name="US")
         model.fit(df)
